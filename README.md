@@ -2,8 +2,6 @@
 
 This library contains implementations of the Levenshtein distance, Jaro-Winkler and Soundex algorithms written in Go (golang). Other algorithms related with string metrics (or string similarity, whatever) are welcome.
 
-* master: [![Build Status](https://travis-ci.org/xrash/smetrics.svg?branch=master)](http://travis-ci.org/xrash/smetrics)
-
 # Algorithms
 
 ## WagnerFischer
@@ -93,11 +91,3 @@ The Soundex encoding. It is a phonetic algorithm that considers how the words so
 
         smetrics.Soundex("Ladd")
 		>> L300
-
-# TODO
-
-- Accept cost functions instead of constant values in every Levenshtein implementation.
-
-- Make a better interface.
-
-- Moar algos!
