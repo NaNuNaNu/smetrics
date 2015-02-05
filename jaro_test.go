@@ -1,10 +1,6 @@
-package tests
+package smetrics
 
-import (
-	"testing"
-	"fmt"
-	"github.com/xrash/smetrics"
-)
+import "testing"
 
 func TestJaro(t *testing.T) {
 	cases := []jarocase{
@@ -18,9 +14,8 @@ func TestJaro(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		if r := smetrics.Jaro(c.s, c.t); r != c.r {
-			fmt.Println(r, "instead of", c.r)
-			t.Fail()
+		if r := Jaro(c.s, c.t); r != c.r {
+			t.Errorf("%v, instead of %v", r, c.r)
 		}
 	}
 }

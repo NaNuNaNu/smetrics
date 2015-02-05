@@ -1,10 +1,28 @@
-package tests
+package smetrics
 
 import (
 	"testing"
-	"fmt"
-	"github.com/xrash/smetrics"
 )
+
+type jarocase struct {
+	s string
+	t string
+	r float64
+}
+
+type levenshteincase struct {
+	s     string
+	t     string
+	icost int
+	dcost int
+	scost int
+	r     int
+}
+
+type soundexcase struct {
+	s string
+	t string
+}
 
 func TestJaroWinkler(t *testing.T) {
 	cases := []jarocase{
@@ -18,9 +36,8 @@ func TestJaroWinkler(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		if r := smetrics.JaroWinkler(c.s, c.t, 0.7, 4); r != c.r {
-			fmt.Println(r, "instead of", c.r)
-			t.Fail()
+		if r := JaroWinkler(c.s, c.t, 0.7, 4); r != c.r {
+			t.Errorf("%v, instead of %v", r, c.r)
 		}
 	}
 }

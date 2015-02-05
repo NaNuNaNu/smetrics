@@ -1,10 +1,6 @@
-package tests
+package smetrics
 
-import (
-	"testing"
-	"fmt"
-	"github.com/xrash/smetrics"
-)
+import "testing"
 
 func TestSoundex(t *testing.T) {
 	cases := []soundexcase{
@@ -25,9 +21,8 @@ func TestSoundex(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		if r := smetrics.Soundex(c.s); r != c.t {
-			fmt.Println(r, "instead of", c.t)
-			t.Fail()
+		if r := Soundex(c.s); r != c.t {
+			t.Errorf("%v, instead of %v", r, c.t)
 		}
 	}
 }

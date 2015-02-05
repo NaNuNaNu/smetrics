@@ -1,10 +1,6 @@
-package tests
+package smetrics
 
-import (
-	"testing"
-	"fmt"
-	"github.com/xrash/smetrics"
-)
+import "testing"
 
 func TestUkkonen(t *testing.T) {
 	cases := []levenshteincase{
@@ -16,9 +12,8 @@ func TestUkkonen(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		if r := smetrics.Ukkonen(c.s, c.t, c.icost, c.dcost, c.scost); r != c.r {
-			fmt.Println(r, "instead of", c.r)
-			t.Fail()
+		if r := Ukkonen(c.s, c.t, c.icost, c.dcost, c.scost); r != c.r {
+			t.Errorf("%v, instead of %v", r, c.r)
 		}
 	}
 }
